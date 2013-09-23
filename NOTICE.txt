@@ -2,3 +2,5 @@ Bamboo Grails Wrapper Plugin
 Copyright 2013 CommerceHub and others
 
 This product includes software developed by David M. Carr.
+
+This product includes media files from the Grails project, licensed under the Apache License, Version 2.0.
