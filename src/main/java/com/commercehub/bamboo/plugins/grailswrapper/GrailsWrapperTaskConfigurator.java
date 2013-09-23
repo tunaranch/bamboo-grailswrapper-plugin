@@ -36,10 +36,11 @@ public class GrailsWrapperTaskConfigurator extends AbstractTaskConfigurator impl
     static final String COMMANDS = "commands";
     static final String COMMON_OPTIONS = "commonOptions";
     static final String JVM_OPTIONS = "jvmOptions";
+    static final String ENVIRONMENT_VARIABLES = "environmentVariables";
 
     private static final String UI_CONFIG_SUPPORT = "uiConfigSupport";
 
-    private static final Set<String> FIELD_SET = ImmutableSet.<String>builder().add(COMMANDS, COMMON_OPTIONS, JVM_OPTIONS, TaskConfigConstants.CFG_JDK_LABEL, TaskConfigConstants.CFG_WORKING_SUB_DIRECTORY).build();
+    private static final Set<String> FIELD_SET = ImmutableSet.<String>builder().add(COMMANDS, COMMON_OPTIONS, JVM_OPTIONS, ENVIRONMENT_VARIABLES, TaskConfigConstants.CFG_JDK_LABEL, TaskConfigConstants.CFG_WORKING_SUB_DIRECTORY).build();
 
     private static final String DEFAULT_COMMANDS = "clean\ntest-app";
     private static final String DEFAULT_COMMON_OPTS = "-non-interactive -plain-output";

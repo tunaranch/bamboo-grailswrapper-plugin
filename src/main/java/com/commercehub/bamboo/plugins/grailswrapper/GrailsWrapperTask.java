@@ -44,8 +44,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 public class GrailsWrapperTask implements TaskType {
     private static final String JDK_LABEL_KEY = "system.jdk.";
@@ -101,6 +104,10 @@ public class GrailsWrapperTask implements TaskType {
     private Map<String, String> buildEnvironment(@NotNull TaskContext taskContext) {
         ConfigurationMap configurationMap = taskContext.getConfigurationMap();
         Map<String, String> environment = Maps.newHashMap(environmentVariableAccessor.getEnvironment(taskContext));
+        Properties properties = loadEnvironmentProperties(taskContext);
+        for (String key : properties.stringPropertyNames()) {
+            environment.put(key, properties.getProperty(key));
+        }
         String javaHome = getJavaHome(taskContext);
         String javaOpts = Strings.emptyToNull(configurationMap.get(GrailsWrapperTaskConfigurator.JVM_OPTIONS));
         if (javaHome != null) {
@@ -110,6 +117,22 @@ public class GrailsWrapperTask implements TaskType {
             environment.put("JAVA_OPTS", javaOpts);
         }
         return environment;
+    }
+
+    private Properties loadEnvironmentProperties(@NotNull TaskContext taskContext) {
+        Properties environmentProps = new Properties();
+        String environmentVars = taskContext.getConfigurationMap().get(GrailsWrapperTaskConfigurator.ENVIRONMENT_VARIABLES);
+        if (environmentVars != null) {
+            StringReader reader = new StringReader(environmentVars);
+            try {
+                environmentProps.load(reader);
+            } catch (IOException ex) {
+                // Ignore
+            } finally {
+                reader.close();
+            }
+        }
+        return environmentProps;
     }
 
     @NotNull

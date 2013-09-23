@@ -1,4 +1,4 @@
-[@ww.textarea labelKey="Grails commands" descriptionKey="Each line will result in a separate invocation of the Grails wrapper.  Arguments can be included after the target name." name="commands" rows="8" cssClass="long-field" required="true"/]
+[@ww.textarea labelKey="Grails commands" descriptionKey="Each line will result in a separate invocation of the Grails wrapper.  Arguments can be included after the target name." name="commands" rows="5" cssClass="long-field" required="true"/]
 
 [@ww.textfield labelKey="Common options" descriptionKey="These options will be prepended to each Grails command. Including '-non-interactive' is strongly suggested.  You can add multiple options separated by a space." name="commonOptions" cssClass="long-field" required="false"/>
 
@@ -12,4 +12,4 @@
 
 [@ww.textfield name="workingSubDirectory" labelKey="Working sub directory" descriptionKey="Specifies where to find the Grails wrapper, relative to the build working directory." cssClass="long-field" required="false"/]
 
-<!-- TODO: additional environment variables -->
+[@ww.textarea name="environmentVariables" labelKey="Environment variables" descriptionKey="Treated as a Java properties file.  Each property will result in a separate environment variable." rows="5" cssClass="long-field" required="false"/]
