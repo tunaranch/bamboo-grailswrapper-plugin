@@ -1,3 +1,6 @@
+# THIS PROJECT IS DEPRECATED
+bamboo-grailswrapper-plugin is no longer maintained, and **this** repository will be removed from GitHub on or after Sunday, January 15, 2017.
+
 # Bamboo Grails Wrapper Plugin
 
 The Bamboo Grails Wrapper plugin facilitates easy use of the [Grails wrapper](http://grails.org/doc/2.3.x/guide/commandLine.html#wrapper) from within [Atlassian Bamboo](https://www.atlassian.com/software/bamboo).
